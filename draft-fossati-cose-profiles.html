@@ -28,7 +28,7 @@
     pycountry 22.3.5
     PyYAML 6.0
     requests 2.28.1
-    setuptools 65.6.0
+    setuptools 65.6.3
     six 1.16.0
     wcwidth 0.2.5
 -->
@@ -1049,7 +1049,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">WG Working Group</dd>
+<dd class="workgroup">CBOR Object Signing and Encryption</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
 <dd class="internet-draft">draft-fossati-cose-profiles-latest</dd>
 <dt class="label-published">Published:</dt>
@@ -1084,14 +1084,15 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://example.com/LATEST">https://example.com/LATEST</a></span>.
+        The latest revision of this draft can be found at <span><a href="https://thomas-fossati.github.io/draft-fossati-cose-profile/draft-fossati-cose-profiles.html">https://thomas-fossati.github.io/draft-fossati-cose-profile/draft-fossati-cose-profiles.html</a></span>.
         Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-fossati-cose-profiles/">https://datatracker.ietf.org/doc/draft-fossati-cose-profiles/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">
         Discussion of this document takes place on the
-        WG Working Group mailing list (<span><a href="mailto:WG@example.com">mailto:WG@example.com</a></span>),
-        which is archived at <span><a href="https://example.com/WG">https://example.com/WG</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+        CBOR Object Signing and Encryption Working Group mailing list (<span><a href="mailto:cose@ietf.org">mailto:cose@ietf.org</a></span>),
+        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/cose/">https://mailarchive.ietf.org/arch/browse/cose/</a></span>.
+        Subscribe at <span><a href="https://www.ietf.org/mailman/listinfo/cose/">https://www.ietf.org/mailman/listinfo/cose/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 <p id="section-note.1-4">Source for this draft and an issue tracker can be found at
-        <span><a href="https://github.com/USER/REPO">https://github.com/USER/REPO</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+        <span><a href="https://github.com/thomas-fossati/draft-fossati-cose-profile">https://github.com/thomas-fossati/draft-fossati-cose-profile</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1174,7 +1175,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">TODO Introduction<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">This document lays a set of rules for how to define COSE profiles.<a href="#section-1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1193,32 +1194,49 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-rules">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-rules" class="section-name selfRef">Rules</a>
       </h2>
-<ol start="1" type="1" class="normal type-1" id="section-3-1">
-<li id="section-3-1.1">
-          <span class="bcp14">MUST NOT</span> change already defined header attributes<a href="#section-3-1.1" class="pilcrow">¶</a>
+<p id="section-3-1">A COSE profile:<a href="#section-3-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-2.1">
+          <span class="bcp14">MUST</span> be specified in a document<a href="#section-3-2.1" class="pilcrow">¶</a>
 </li>
-        <li id="section-3-1.2">
-          <span class="bcp14">MAY</span> define new header attributes
-a. if so, <span class="bcp14">MUST</span> define them in the same document<a href="#section-3-1.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-3-2.2">
+          <span class="bcp14">MUST NOT</span> change the syntax or semantics of any already defined header attribute<a href="#section-3-2.2" class="pilcrow">¶</a>
 </li>
-        <li id="section-3-1.3">
-          <span class="bcp14">MUST</span> use CDDL to fully specify the syntax rules for the profile<a href="#section-3-1.3" class="pilcrow">¶</a>
+        <li class="normal" id="section-3-2.3">
+          <p id="section-3-2.3.1"><span class="bcp14">MAY</span> define new header attributes<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-2.3.2.1">if so, it <span class="bcp14">MUST</span> provide their definition in the same document<a href="#section-3-2.3.2.1" class="pilcrow">¶</a>
 </li>
-        <li id="section-3-1.4">
-          <span class="bcp14">MUST</span> use the COSE_profile header attribute in the protected header
-a. value of COSE_profile <span class="bcp14">MUST</span> be global unique via:
-     - IANA registry
-     - using an oid or [cu]ri
-     - using a uuid
-b. type of value <span class="bcp14">SHOULD</span> be application appropriate (e.g., constrained node environments)<a href="#section-3-1.4" class="pilcrow">¶</a>
+          </ul>
 </li>
-        <li id="section-3-1.5">
-          <span class="bcp14">MAY</span> be tagged in front of COSE tag<a href="#section-3-1.5" class="pilcrow">¶</a>
+        <li class="normal" id="section-3-2.4">
+          <span class="bcp14">MUST</span> use CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> to fully specify the syntax rules for the profile<a href="#section-3-2.4" class="pilcrow">¶</a>
 </li>
-        <li id="section-3-1.6">
-          <span class="bcp14">SHOULD</span> define its complementary media-type/content-format<a href="#section-3-1.6" class="pilcrow">¶</a>
+        <li class="normal" id="section-3-2.5">
+          <p id="section-3-2.5.1"><span class="bcp14">MUST</span> use the <code>COSE_profile</code> header attribute in the protected header<a href="#section-3-2.5.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-2.5.2.1">
+              <p id="section-3-2.5.2.1.1">The value of <code>COSE_profile</code> <span class="bcp14">MUST</span> be global unique via:<a href="#section-3-2.5.2.1.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-2.5.2.1.2.1">IANA registry<a href="#section-3-2.5.2.1.2.1" class="pilcrow">¶</a>
 </li>
-      </ol>
+                <li class="normal" id="section-3-2.5.2.1.2.2">using an OID <span>[<a href="#RFC9090" class="cite xref">RFC9090</a>]</span>, URI <span>[<a href="#STD66" class="cite xref">STD66</a>]</span> or CRI <span>[<a href="#I-D.ietf-core-href" class="cite xref">I-D.ietf-core-href</a>]</span><a href="#section-3-2.5.2.1.2.2" class="pilcrow">¶</a>
+</li>
+                <li class="normal" id="section-3-2.5.2.1.2.3">using a UUID <span>[<a href="#RFC4122" class="cite xref">RFC4122</a>]</span><a href="#section-3-2.5.2.1.2.3" class="pilcrow">¶</a>
+</li>
+              </ul>
+</li>
+            <li class="normal" id="section-3-2.5.2.2">The chosen value <span class="bcp14">SHOULD</span> be appropriate for the intended usage scope (e.g., a small value when used in constrained node environments)<a href="#section-3-2.5.2.2" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="section-3-2.6">
+          <span class="bcp14">MAY</span> define its own COSE tag<a href="#section-3-2.6" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-3-2.7">
+          <span class="bcp14">SHOULD</span> define its complementary media-type and content-format<a href="#section-3-2.7" class="pilcrow">¶</a>
+</li>
+      </ul>
 </section>
 </div>
 <div id="security-considerations">
@@ -1242,13 +1260,37 @@ b. type of value <span class="bcp14">SHOULD</span> be application appropriate (e
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
+<dt id="I-D.ietf-core-href">[I-D.ietf-core-href]</dt>
+      <dd>
+<span class="refAuthor">Bormann, C.</span> and <span class="refAuthor">H. Birkholz</span>, <span class="refTitle">"Constrained Resource Identifiers"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-href-11</span>, <time datetime="2022-09-07" class="refDate">7 September 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-href-11">https://datatracker.ietf.org/doc/html/draft-ietf-core-href-11</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
       <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC4122">[RFC4122]</dt>
+      <dd>
+<span class="refAuthor">Leach, P.</span>, <span class="refAuthor">Mealling, M.</span>, and <span class="refAuthor">R. Salz</span>, <span class="refTitle">"A Universally Unique IDentifier (UUID) URN Namespace"</span>, <span class="seriesInfo">RFC 4122</span>, <span class="seriesInfo">DOI 10.17487/RFC4122</span>, <time datetime="2005-07" class="refDate">July 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4122">https://www.rfc-editor.org/rfc/rfc4122</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
-    <dd>
+      <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8610">[RFC8610]</dt>
+      <dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9090">[RFC9090]</dt>
+      <dd>
+<span class="refAuthor">Bormann, C.</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR) Tags for Object Identifiers"</span>, <span class="seriesInfo">RFC 9090</span>, <span class="seriesInfo">DOI 10.17487/RFC9090</span>, <time datetime="2021-07" class="refDate">July 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9090">https://www.rfc-editor.org/rfc/rfc9090</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="STD66">[STD66]</dt>
+      <dd>
+<span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3986">https://www.rfc-editor.org/rfc/rfc3986</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="STD96">[STD96]</dt>
+    <dd>
+<span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE): Structures and Process"</span>, <span class="seriesInfo">STD 96</span>, <span class="seriesInfo">RFC 9052</span>, <span class="seriesInfo">DOI 10.17487/RFC9052</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9052">https://www.rfc-editor.org/rfc/rfc9052</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
